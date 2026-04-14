@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Profil Étudiant</string>
+
+    <!-- Profile field labels -->
+    <string name="label_nom">Nom</string>
+    <string name="label_prenom">Prénom</string>
+    <string name="label_classe">Classe</string>
+    <string name="label_remarques">Remarques</string>
+
+    <!-- NoteActivity labels -->
+    <string name="label_matiere">Matière</string>
+    <string name="label_score">Note</string>
+    <string name="hint_score">Note sur 20</string>
+
+    <!-- Buttons -->
+    <string name="btn_enregistrer">Enregistrer</string>
+    <string name="btn_appeler">Appeler</string>
+    <string name="btn_add_note">Ajouter Note</string>
+    <string name="btn_voir_notes">Voir les Notes</string>
+
+    <!-- Messages -->
+    <string name="toast_saved">Profil enregistré !</string>
+    <string name="toast_no_network">Pas de connexion réseau</string>
+    <string name="toast_network_error">Erreur réseau</string>
+    <string name="toast_no_phone">Numéro non disponible</string>
+    <string name="tracking_notif_title">Suivi GPS actif</string>
+    <string name="tracking_notif_text">Enregistrement de la position GPS en cours…</string>
+</resources>

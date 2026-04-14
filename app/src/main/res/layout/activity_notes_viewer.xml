@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    NotesViewerActivity layout — v2
+    Modern full-bleed design matching the profile screen
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="20dp">
+
+        <!-- Label pill -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RELEVÉ DE NOTES"
+            android:textColor="#7C7CCC"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Student name title -->
+        <TextView
+            android:id="@+id/tvNotesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes de l'étudiant"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.01" />
+
+        <!-- Accent divider -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="3dp"
+            android:background="@drawable/accent_bar"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+    <!-- Notes list -->
+    <ListView
+        android:id="@+id/listViewNotesViewer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
+        android:clipToPadding="false" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/tvEmptyNotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Aucune note enregistrée"
+        android:textColor="#7C7CCC"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <!-- Bottom close button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="24dp"
+        android:paddingTop="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonCloseNotes"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Fermer"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#6A3DE8"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

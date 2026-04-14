@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Section header accent line (left border pill) -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#9B59FF"
+        android:endColor="#6A3DE8"
+        android:angle="270"
+        android:type="linear" />
+    <corners android:radius="4dp" />
+</shape>

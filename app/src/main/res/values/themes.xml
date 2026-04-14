@@ -1,0 +1,48 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme — NoActionBar so our layout controls the full screen -->
+    <style name="Theme.Projet_android" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#6A3DE8</item>
+        <item name="colorPrimaryVariant">#4A20C8</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#9B59FF</item>
+        <item name="colorSecondaryVariant">#7C3DDD</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Status bar transparent to blend with gradient -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <!-- Window background as gradient -->
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+        <!-- Force all TextInputLayouts app-wide to use white hint text -->
+        <item name="android:textColorHint">#FFFFFF</item>
+        <!-- Use our custom TextInputLayout style app-wide -->
+        <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+    </style>
+
+    <!--
+        Custom TextInputLayout style — forces white floating label and hint.
+        Material's default derives these from colorOnSurface (dark/grey in dark theme).
+        We override every hint-related color here so it cannot be overridden downstream.
+    -->
+    <style name="Widget.App.TextInputLayout"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <!-- White floating label (when text is entered or field focused) -->
+        <item name="hintTextColor">@android:color/white</item>
+        <!-- White inline placeholder text -->
+        <item name="android:textColorHint">#FFFFFF</item>
+        <!-- Purple stroke, 2dp unfocused, 2.5dp focused -->
+        <item name="boxStrokeColor">#9B59FF</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2.5dp</item>
+        <!-- Dark navy field background -->
+        <item name="boxBackgroundColor">#1E1A3A</item>
+        <!-- Rounded corners -->
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+    </style>
+
+</resources>

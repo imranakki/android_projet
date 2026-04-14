@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Landscape layout — v3 (theme-driven TextInputLayout style)
+    LEFT:  avatar + form fields (student info)
+    RIGHT: notes ListView
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background">
+
+    <!-- Two-column content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="44dp"
+        android:paddingBottom="8dp">
+
+        <!-- ════ LEFT: avatar + form ════ -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingEnd="12dp">
+
+            <!-- Avatar row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <FrameLayout
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginEnd="14dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewFallback"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_person_placeholder"
+                        android:scaleType="centerInside"
+                        android:padding="6dp" />
+
+                    <ImageView
+                        android:id="@+id/networkImageViewPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PROFIL"
+                        android:textColor="#7C7CCC"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Informations"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Form fields -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_glass"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nom"
+                        android:layout_marginBottom="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextNom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Prénom"
+                        android:layout_marginBottom="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextPrenom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Classe"
+                        android:layout_marginBottom="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextClasse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Remarques">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextRemarques"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:minLines="2"
+                            android:gravity="top|start"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <!-- Vertical divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#33FFFFFF"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp" />
+
+        <!-- ════ RIGHT: notes list ════ -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/accent_bar"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Notes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/20"
+                    android:textColor="#7C7CCC"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listViewNotes"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="6dp"
+                android:clipToPadding="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Button strip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="6dp"
+        android:weightSum="4">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonEnregistrer"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:text="Enregistrer"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#6A3DE8"
+            app:cornerRadius="10dp"
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="#FFFFFF"
+            android:layout_marginEnd="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAppeler"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:text="Appeler"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#1E1B4B"
+            app:strokeColor="#9B59FF"
+            app:strokeWidth="1.5dp"
+            app:cornerRadius="10dp"
+            app:icon="@android:drawable/sym_action_call"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="#9B59FF"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonVoirNotes"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:text="Voir Notes"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#1E1B4B"
+            app:strokeColor="#9B59FF"
+            app:strokeWidth="1.5dp"
+            app:cornerRadius="10dp"
+            app:icon="@android:drawable/ic_menu_agenda"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="#9B59FF"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAddNote"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:text="Ajouter Note"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#9B59FF"
+            app:cornerRadius="10dp"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="#FFFFFF"
+            android:layout_marginStart="6dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

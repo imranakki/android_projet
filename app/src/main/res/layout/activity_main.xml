@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Portrait layout — Modern redesign v3
+    • Full-bleed gradient (NoActionBar)
+    • TextInputLayout style comes from theme (Widget.App.TextInputLayout)
+    • Local storage: Enregistrer saves to SharedPreferences
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="56dp"
+        android:paddingBottom="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- ── Small-caps app label ── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROFIL ÉTUDIANT"
+            android:textColor="#7C7CCC"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <!-- ── Avatar ── -->
+        <FrameLayout
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="14dp">
+
+            <ImageView
+                android:id="@+id/imageViewFallback"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_person_placeholder"
+                android:scaleType="centerInside"
+                android:padding="10dp" />
+
+            <ImageView
+                android:id="@+id/networkImageViewPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
+        <!-- ── Accent divider ── -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="3dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/accent_bar"
+            android:layout_marginBottom="28dp" />
+
+        <!-- ── Section label: Informations ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="18dp"
+                android:background="@drawable/accent_bar"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informations"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- ── Glass card with form fields ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_glass"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="20dp">
+
+            <!-- NOM -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- PRÉNOM -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prénom"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPrenom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CLASSE -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Classe"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextClasse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- REMARQUES -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Remarques">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextRemarques"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:maxLines="5"
+                    android:gravity="top|start"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- ── Section label: Actions ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="18dp"
+                android:background="@drawable/accent_bar"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actions"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- ── PRIMARY: Enregistrer ── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonEnregistrer"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Enregistrer"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:letterSpacing="0.06"
+            app:backgroundTint="#6A3DE8"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:iconTint="#FFFFFF"
+            android:layout_marginBottom="10dp" />
+
+        <!-- ── SECONDARY ROW: Appeler | Voir Notes ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAppeler"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Appeler"
+                android:textSize="13sp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#1E1B4B"
+                app:strokeColor="#9B59FF"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/sym_action_call"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="#9B59FF"
+                android:layout_marginEnd="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonVoirNotes"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Voir Notes"
+                android:textSize="13sp"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#1E1B4B"
+                app:strokeColor="#9B59FF"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_menu_agenda"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="#9B59FF"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- ── TERTIARY: Ajouter Note ── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonAddNote"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Ajouter une Note"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:letterSpacing="0.04"
+            app:backgroundTint="#9B59FF"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:iconTint="#FFFFFF" />
+
+    </LinearLayout>
+
+</ScrollView>
