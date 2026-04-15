@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.List;
 
 public class NoteAdapter extends ArrayAdapter<Note> {
@@ -28,13 +27,13 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
         if (convertView == null) {
 
-            convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_note, parent, false);
+            convertView =
+                    LayoutInflater.from(getContext()).inflate(R.layout.item_note, parent, false);
 
             holder = new ViewHolder();
-            holder.imageViewIcon   = convertView.findViewById(R.id.imageViewNoteIcon);
+            holder.imageViewIcon = convertView.findViewById(R.id.imageViewNoteIcon);
             holder.textViewMatiere = convertView.findViewById(R.id.textViewMatiere);
-            holder.textViewNote    = convertView.findViewById(R.id.textViewNote);
+            holder.textViewNote = convertView.findViewById(R.id.textViewNote);
 
             convertView.setTag(holder);
         } else {
@@ -55,4 +54,3 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         return convertView;
     }
 }
-

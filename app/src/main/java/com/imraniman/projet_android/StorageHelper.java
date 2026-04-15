@@ -2,33 +2,31 @@ package com.imraniman.projet_android;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 public class StorageHelper {
 
-    private static final String PREFS_NAME    = "student_data";
+    private static final String PREFS_NAME = "student_data";
 
-    public static final String KEY_NOM        = "nom";
-    public static final String KEY_PRENOM     = "prenom";
-    public static final String KEY_CLASSE     = "classe";
-    public static final String KEY_REMARQUES  = "remarques";
-    public static final String KEY_PHONE      = "phone";
-    private static final String KEY_NOTES     = "notes_json";
+    public static final String KEY_NOM = "nom";
+    public static final String KEY_PRENOM = "prenom";
+    public static final String KEY_CLASSE = "classe";
+    public static final String KEY_REMARQUES = "remarques";
+    public static final String KEY_PHONE = "phone";
+    private static final String KEY_NOTES = "notes_json";
 
-    public static void saveProfile(Context ctx,
-                                   String nom, String prenom,
-                                   String classe, String remarques, String phone) {
-        prefs(ctx).edit()
-                .putString(KEY_NOM,       nom)
-                .putString(KEY_PRENOM,    prenom)
-                .putString(KEY_CLASSE,    classe)
+    public static void saveProfile(
+            Context ctx, String nom, String prenom, String classe, String remarques, String phone) {
+        prefs(ctx)
+                .edit()
+                .putString(KEY_NOM, nom)
+                .putString(KEY_PRENOM, prenom)
+                .putString(KEY_CLASSE, classe)
                 .putString(KEY_REMARQUES, remarques)
-                .putString(KEY_PHONE,     phone)
+                .putString(KEY_PHONE, phone)
                 .apply();
     }
 
@@ -42,9 +40,10 @@ public class StorageHelper {
             try {
                 JSONObject obj = new JSONObject();
                 obj.put("matiere", n.getMatiere());
-                obj.put("note",    n.getNote());
+                obj.put("note", n.getNote());
                 arr.put(obj);
-            } catch (JSONException ignored) { }
+            } catch (JSONException ignored) {
+            }
         }
         prefs(ctx).edit().putString(KEY_NOTES, arr.toString()).apply();
     }
@@ -58,7 +57,8 @@ public class StorageHelper {
                 JSONObject obj = arr.getJSONObject(i);
                 list.add(new Note(obj.getString("matiere"), obj.getDouble("note")));
             }
-        } catch (JSONException ignored) { }
+        } catch (JSONException ignored) {
+        }
         return list;
     }
 
@@ -66,4 +66,3 @@ public class StorageHelper {
         return ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 }
-

@@ -8,6 +8,7 @@ material = "1.13.0"
 volley = "1.2.1"
 workmanager = "2.10.0"
 playServicesLocation = "21.3.0"
+spotless = "7.0.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -21,4 +22,5 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 

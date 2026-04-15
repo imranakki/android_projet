@@ -2,25 +2,22 @@ package com.imraniman.projet_android;
 
 import android.content.Context;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class NetworkSyncWorker extends Worker {
 
     private static final String TAG = "NetworkSyncWorker";
-    private static final String SYNC_URL = "https://belatar.name/rest/gps_sync.php"; 
+    private static final String SYNC_URL = "https://belatar.name/rest/gps_sync.php";
 
     public NetworkSyncWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -75,13 +72,12 @@ public class NetworkSyncWorker extends Worker {
                 return Result.success();
             } else {
                 Log.e(TAG, "Sync failed with HTTP code: " + code);
-                return Result.retry(); 
+                return Result.retry();
             }
 
         } catch (Exception e) {
             Log.e(TAG, "Error during sync: " + e.getMessage());
-            return Result.retry(); 
+            return Result.retry();
         }
     }
 }
-

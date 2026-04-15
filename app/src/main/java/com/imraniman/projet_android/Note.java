@@ -20,4 +20,3 @@ public class Note implements Serializable {
         return note;
     }
 }
-

@@ -12,11 +12,9 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -42,57 +40,70 @@ public class TrackingService extends Service {
 
         createNotificationChannel();
 
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                if (locationResult == null) return;
-                for (Location location : locationResult.getLocations()) {
-                    Log.d(TAG, "Location received: " + location.getLatitude() + ", " + location.getLongitude());
+        locationCallback =
+                new LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        if (locationResult == null) return;
+                        for (Location location : locationResult.getLocations()) {
+                            Log.d(
+                                    TAG,
+                                    "Location received: "
+                                            + location.getLatitude()
+                                            + ", "
+                                            + location.getLongitude());
 
-                    dbHelper.addPosition(location.getLatitude(), location.getLongitude(), System.currentTimeMillis());
-                }
-            }
-        };
+                            dbHelper.addPosition(
+                                    location.getLatitude(),
+                                    location.getLongitude(),
+                                    System.currentTimeMillis());
+                        }
+                    }
+                };
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Suivi GPS actif")
-                .setContentText("Enregistrement des positions en arrière-plan")
-                .setSmallIcon(android.R.drawable.ic_menu_mylocation)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
-                .build();
+        Notification notification =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle("Suivi GPS actif")
+                        .setContentText("Enregistrement des positions en arrière-plan")
+                        .setSmallIcon(android.R.drawable.ic_menu_mylocation)
+                        .setPriority(NotificationCompat.PRIORITY_LOW)
+                        .build();
 
         startForeground(NOTIFICATION_ID, notification);
 
         requestLocationUpdates();
 
-        return START_STICKY; 
+        return START_STICKY;
     }
 
     private void requestLocationUpdates() {
-        LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000) 
-                .setMinUpdateIntervalMillis(5000)
-                .build();
+        LocationRequest locationRequest =
+                new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000)
+                        .setMinUpdateIntervalMillis(5000)
+                        .build();
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
             Log.e(TAG, "Location permission not granted. Stopping service.");
             stopSelf();
             return;
         }
 
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        fusedLocationClient.requestLocationUpdates(
+                locationRequest, locationCallback, Looper.getMainLooper());
     }
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "Service de Tracking GPS",
-                    NotificationManager.IMPORTANCE_LOW
-            );
+            NotificationChannel channel =
+                    new NotificationChannel(
+                            CHANNEL_ID,
+                            "Service de Tracking GPS",
+                            NotificationManager.IMPORTANCE_LOW);
             channel.setDescription("Utilisé pour le suivi GPS en arrière-plan");
             NotificationManager manager = getSystemService(NotificationManager.class);
             if (manager != null) {
@@ -112,7 +123,6 @@ public class TrackingService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null; 
+        return null;
     }
 }
-

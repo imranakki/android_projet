@@ -4,26 +4,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.button.MaterialButton;
-
 import java.util.ArrayList;
 
 public class NotesViewerActivity extends AppCompatActivity {
 
     public static final String EXTRA_STUDENT_NAME = "viewer_student_name";
-    public static final String EXTRA_NOTES_LIST   = "viewer_notes_list";
+    public static final String EXTRA_NOTES_LIST = "viewer_notes_list";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_viewer);
 
-        TextView tvTitle    = findViewById(R.id.tvNotesTitle);
-        TextView tvEmpty    = findViewById(R.id.tvEmptyNotes);
-        ListView listView   = findViewById(R.id.listViewNotesViewer);
+        TextView tvTitle = findViewById(R.id.tvNotesTitle);
+        TextView tvEmpty = findViewById(R.id.tvEmptyNotes);
+        ListView listView = findViewById(R.id.listViewNotesViewer);
         MaterialButton btnClose = findViewById(R.id.buttonCloseNotes);
 
         String name = getIntent().getStringExtra(EXTRA_STUDENT_NAME);
@@ -32,7 +29,8 @@ public class NotesViewerActivity extends AppCompatActivity {
         }
 
         @SuppressWarnings("unchecked")
-        ArrayList<Note> notes = (ArrayList<Note>) getIntent().getSerializableExtra(EXTRA_NOTES_LIST);
+        ArrayList<Note> notes =
+                (ArrayList<Note>) getIntent().getSerializableExtra(EXTRA_NOTES_LIST);
 
         if (notes == null || notes.isEmpty()) {
             listView.setVisibility(View.GONE);
@@ -51,4 +49,3 @@ public class NotesViewerActivity extends AppCompatActivity {
         return true;
     }
 }
-
